@@ -3,6 +3,7 @@ package sdf;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -23,10 +24,11 @@ public class HttpClientConnection implements Runnable{
         InputStreamReader is = null; 
         BufferedReader br = null;
 
+        OutputStream os; 
         HttpWriter h_writer = null; 
         //BufferedWriter bw = null;
         
-
+        byte[] buffer = new byte[1024];
         String cmdfrombroswer;
         String method; 
         String resource; 
@@ -75,6 +77,8 @@ public class HttpClientConnection implements Runnable{
                             response = "HTTP/1.1 200 OK \r\n Content Type: image/png/ \r\n\r\n ";
                             try {
                                 h_writer.writeString(response);
+                                os = new FileOutputStream(resource_dir);
+                                h_writer.writeBytes(buffer);
                                 h_writer.close();
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -85,6 +89,8 @@ public class HttpClientConnection implements Runnable{
                             response = "HTTP/1.1 200 OK\r\n \r\n ";
                             try {
                                 h_writer.writeString(response);
+                                os = new FileOutputStream(resource_dir);
+                                h_writer.writeBytes(buffer);
                                 h_writer.close();
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -107,6 +113,8 @@ public class HttpClientConnection implements Runnable{
                             response = "HTTP/1.1 200 OK \r\n Content Type: image/png/ \r\n\r\n ";
                             try {
                                 h_writer.writeString(response);
+                                os = new FileOutputStream(resource_dir);
+                                h_writer.writeBytes(buffer);
                                 h_writer.close();
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -117,6 +125,8 @@ public class HttpClientConnection implements Runnable{
                             response = "HTTP/1.1 200 OK\r\n \r\n ";
                             try {
                                 h_writer.writeString(response);
+                                os = new FileOutputStream(resource_dir);
+                                h_writer.writeBytes(buffer);
                                 h_writer.close();
                             } catch (Exception e) {
                                 e.printStackTrace();

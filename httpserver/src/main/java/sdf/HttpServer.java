@@ -27,8 +27,7 @@ public class HttpServer {
         ExecutorService threadPool = Executors.newFixedThreadPool(3);
         serverSocket = new ServerSocket(port);
         System.out.println("Server listening at port " + port + "...");
-    
-
+        
         while (true){ 
             socket = serverSocket.accept();
             HttpClientConnection worker = new HttpClientConnection(socket,docRoot);
